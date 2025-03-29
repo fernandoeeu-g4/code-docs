@@ -12,6 +12,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { Toaster } from "@/components/ui/sonner";
 import { DocsToolbar } from "@/features/docs/components/docs-toolbar";
 import { currentFileAtom } from "@/features/docs/store/docs.store";
 import { cn } from "@/lib/utils";
@@ -27,7 +28,8 @@ function RouteComponent() {
   const currentFilePath = useAtomValue(currentFileAtom);
   const paths = currentFilePath?.split("/");
   return (
-    <div className="flex bg-sidebar">
+    <div className="flex bg-sidebar relative">
+      <Toaster />
       <SidebarProvider>
         <AppSidebar />
         <SidebarInset className="flex flex-col h-svh">

@@ -1,13 +1,14 @@
 `use client`;
 
 import { File, Folder } from "@/components/magicui/file-tree";
-import { useAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 import { CodeHighlighter } from "./components/code-highlighter";
 import { DocsFileTree } from "./components/docs-file-tree";
 import { Column, TwoColumnLayout } from "./components/two-column-layout";
-import { currentFileAtom } from "./store/docs.store";
+import { currentFileAtom, currentFileContentAtom } from "./store/docs.store";
 import type { FileContent, TreeNode } from "./types"; // Import types using 'import type'
 import { mockFileContents, mockFileTree } from "./types"; // Import values (mock data)
+import { useEffect } from "react";
 
 // Helper function to find a node by PATH (recursive)
 const findNodeByPath = (nodes: TreeNode[], path: string): TreeNode | null => {
@@ -37,6 +38,12 @@ const findContentByPath = (
 
 export function DocsLayout() {
   const [currentFilePath, setCurrentFilePath] = useAtom(currentFileAtom);
+  const setCurrentFileContent = useSetAtom(currentFileContentAtom);
+
+  useEffect(() => {
+    const currentContent = getCurrentContent({ currentFilePath });
+    setCurrentFileContent(currentContent);
+  }, [currentFilePath]);
 
   function getCurrentContent({ currentFilePath }: { currentFilePath: string }) {
     console.log({ currentFilePath });

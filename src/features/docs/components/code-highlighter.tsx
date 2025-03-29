@@ -26,7 +26,9 @@ export function CodeHighlighter({ code }: Props) {
       style={{
         fontFamily: '"Fira code", "Fira Mono", monospace',
         fontSize: 12,
+        outline: "none",
       }}
+      textareaClassName="outline-none"
     />
   );
 }
