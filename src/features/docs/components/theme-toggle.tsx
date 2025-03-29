@@ -44,7 +44,7 @@ export function ThemeToggle() {
 
   return (
     <div
-      className="flex items-center space-x-2 hover:cursor-pointer"
+      className="flex items-center space-x-2 hover:cursor-pointer absolute top-8  right-8 z-90"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
       {/* <Switch

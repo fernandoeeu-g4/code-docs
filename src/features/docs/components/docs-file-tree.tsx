@@ -7,19 +7,16 @@ import { currentFileAtom } from "../store/docs.store";
 
 export function DocsFileTree() {
   const setCurrentFile = useSetAtom(currentFileAtom);
+
   function handleSelect(path: string) {
     setCurrentFile(path);
   }
+
   return (
     <Tree
-      // all open by default (map over all folders ids)
       initialExpandedItems={extractAllFolderPaths(mockFileTree)}
-      // Remove elements prop, we render children directly
-      className="p-2 h-full"
-      // The selectItem prop from TreeContext will be used internally by File component
-      // but our handleSelect updates the state for content display
+      className="p-4 h-full overflow-y-auto space-y-1"
     >
-      {/* Render our tree structure using the recursive function */}
       {renderTree({ handleSelect, nodes: mockFileTree })}
     </Tree>
   );

@@ -1,11 +1,21 @@
 "use client";
 
 import React from "react";
+import { useNavigate } from "@tanstack/react-router";
 
 import { Dock, DockIcon } from "@/components/magicui/dock";
 import { currentFileContentAtom } from "@/features/docs/store/docs.store";
 import { useAtomValue } from "jotai";
-import { Copy } from "lucide-react";
+import {
+  Copy,
+  Code,
+  GitBranch,
+  HelpCircle,
+  BookOpen,
+  Compass,
+  Library,
+  Terminal,
+} from "lucide-react";
 import { toast } from "sonner";
 import {
   Tooltip,
@@ -18,12 +28,17 @@ export type IconProps = React.HTMLAttributes<SVGElement>;
 
 export function AppDock() {
   const currentFileContent = useAtomValue(currentFileContentAtom);
+  const navigate = useNavigate();
 
   function copyCode() {
     if (currentFileContent) {
       navigator.clipboard.writeText(currentFileContent);
       toast.success("Código copiado para a área de transferência");
     }
+  }
+
+  function goToStack() {
+    navigate({ to: "/docs/stack" });
   }
 
   console.log("AppDock");
@@ -33,6 +48,27 @@ export function AppDock() {
         <Dock direction="middle" className="h-14">
           <DockIcon>
             <Icons.copyCode className="size-5" onClick={copyCode} />
+          </DockIcon>
+          <DockIcon>
+            <Icons.stack className="size-5" onClick={goToStack} />
+          </DockIcon>
+          <DockIcon>
+            <Icons.cli className="size-5" />
+          </DockIcon>
+          <DockIcon>
+            <Icons.git className="size-5" />
+          </DockIcon>
+          <DockIcon>
+            <Icons.faq className="size-5" />
+          </DockIcon>
+          <DockIcon>
+            <Icons.docs className="size-5" />
+          </DockIcon>
+          <DockIcon>
+            <Icons.guides className="size-5" />
+          </DockIcon>
+          <DockIcon>
+            <Icons.resources className="size-5" />
           </DockIcon>
           {/* <DockIcon className="mx-2 w-min"> */}
           {/* <DockProfileButton /> */}
@@ -59,6 +95,62 @@ const Icons = {
         <Copy className="size-6" {...props} />
       </TooltipTrigger>
       <TooltipContent>Copy code</TooltipContent>
+    </Tooltip>
+  ),
+  stack: (props: IconProps) => (
+    <Tooltip>
+      <TooltipTrigger>
+        <Code className="size-6" {...props} />
+      </TooltipTrigger>
+      <TooltipContent>Stack Frontend</TooltipContent>
+    </Tooltip>
+  ),
+  cli: (props: IconProps) => (
+    <Tooltip>
+      <TooltipTrigger>
+        <Terminal className="size-6" {...props} />
+      </TooltipTrigger>
+      <TooltipContent>CLI</TooltipContent>
+    </Tooltip>
+  ),
+  git: (props: IconProps) => (
+    <Tooltip>
+      <TooltipTrigger>
+        <GitBranch className="size-6" {...props} />
+      </TooltipTrigger>
+      <TooltipContent>Fluxo Git</TooltipContent>
+    </Tooltip>
+  ),
+  faq: (props: IconProps) => (
+    <Tooltip>
+      <TooltipTrigger>
+        <HelpCircle className="size-6" {...props} />
+      </TooltipTrigger>
+      <TooltipContent>FAQ</TooltipContent>
+    </Tooltip>
+  ),
+  docs: (props: IconProps) => (
+    <Tooltip>
+      <TooltipTrigger>
+        <BookOpen className="size-6" {...props} />
+      </TooltipTrigger>
+      <TooltipContent>Documentação</TooltipContent>
+    </Tooltip>
+  ),
+  guides: (props: IconProps) => (
+    <Tooltip>
+      <TooltipTrigger>
+        <Compass className="size-6" {...props} />
+      </TooltipTrigger>
+      <TooltipContent>Guias</TooltipContent>
+    </Tooltip>
+  ),
+  resources: (props: IconProps) => (
+    <Tooltip>
+      <TooltipTrigger>
+        <Library className="size-6" {...props} />
+      </TooltipTrigger>
+      <TooltipContent>Recursos</TooltipContent>
     </Tooltip>
   ),
   notion: (props: IconProps) => (

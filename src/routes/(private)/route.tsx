@@ -1,3 +1,4 @@
+import { AppDock } from "@/components/app-dock";
 import { AppSidebar } from "@/components/app-sidebar";
 import {
   Breadcrumb,
@@ -13,7 +14,6 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/sonner";
-import { DocsToolbar } from "@/features/docs/components/docs-toolbar";
 import { currentFileAtom } from "@/features/docs/store/docs.store";
 import { cn } from "@/lib/utils";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
@@ -30,6 +30,7 @@ function RouteComponent() {
   return (
     <div className="flex bg-sidebar relative">
       <Toaster />
+      <AppDock />
       <SidebarProvider>
         <AppSidebar />
         <SidebarInset className="flex flex-col h-svh">
@@ -63,7 +64,6 @@ function RouteComponent() {
                 </BreadcrumbList>
               </Breadcrumb>
             </div>
-            <DocsToolbar />
           </header>
           <div className="flex flex-1 flex-col gap-4 p-4 pt-0 overflow-auto">
             <Outlet />

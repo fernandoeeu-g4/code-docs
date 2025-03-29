@@ -16,6 +16,7 @@ import { Route as privateRouteImport } from './routes/(private)/route'
 import { Route as IndexImport } from './routes/index'
 import { Route as PocDocsImport } from './routes/poc/docs'
 import { Route as privateDocsIndexImport } from './routes/(private)/docs/index'
+import { Route as privateDocsStackIndexImport } from './routes/(private)/docs/stack/index'
 
 // Create/Update Routes
 
@@ -44,6 +45,12 @@ const PocDocsRoute = PocDocsImport.update({
 const privateDocsIndexRoute = privateDocsIndexImport.update({
   id: '/docs/',
   path: '/docs/',
+  getParentRoute: () => privateRouteRoute,
+} as any)
+
+const privateDocsStackIndexRoute = privateDocsStackIndexImport.update({
+  id: '/docs/stack/',
+  path: '/docs/stack/',
   getParentRoute: () => privateRouteRoute,
 } as any)
 
@@ -86,6 +93,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof privateDocsIndexImport
       parentRoute: typeof privateRouteImport
     }
+    '/(private)/docs/stack/': {
+      id: '/(private)/docs/stack/'
+      path: '/docs/stack'
+      fullPath: '/docs/stack'
+      preLoaderRoute: typeof privateDocsStackIndexImport
+      parentRoute: typeof privateRouteImport
+    }
   }
 }
 
@@ -93,10 +107,12 @@ declare module '@tanstack/react-router' {
 
 interface privateRouteRouteChildren {
   privateDocsIndexRoute: typeof privateDocsIndexRoute
+  privateDocsStackIndexRoute: typeof privateDocsStackIndexRoute
 }
 
 const privateRouteRouteChildren: privateRouteRouteChildren = {
   privateDocsIndexRoute: privateDocsIndexRoute,
+  privateDocsStackIndexRoute: privateDocsStackIndexRoute,
 }
 
 const privateRouteRouteWithChildren = privateRouteRoute._addFileChildren(
@@ -108,6 +124,7 @@ export interface FileRoutesByFullPath {
   '': typeof DocsRoute
   '/poc/docs': typeof PocDocsRoute
   '/docs': typeof privateDocsIndexRoute
+  '/docs/stack': typeof privateDocsStackIndexRoute
 }
 
 export interface FileRoutesByTo {
@@ -115,6 +132,7 @@ export interface FileRoutesByTo {
   '': typeof DocsRoute
   '/poc/docs': typeof PocDocsRoute
   '/docs': typeof privateDocsIndexRoute
+  '/docs/stack': typeof privateDocsStackIndexRoute
 }
 
 export interface FileRoutesById {
@@ -124,13 +142,14 @@ export interface FileRoutesById {
   '/_docs': typeof DocsRoute
   '/poc/docs': typeof PocDocsRoute
   '/(private)/docs/': typeof privateDocsIndexRoute
+  '/(private)/docs/stack/': typeof privateDocsStackIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '' | '/poc/docs' | '/docs'
+  fullPaths: '/' | '' | '/poc/docs' | '/docs' | '/docs/stack'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '' | '/poc/docs' | '/docs'
+  to: '/' | '' | '/poc/docs' | '/docs' | '/docs/stack'
   id:
     | '__root__'
     | '/'
@@ -138,6 +157,7 @@ export interface FileRouteTypes {
     | '/_docs'
     | '/poc/docs'
     | '/(private)/docs/'
+    | '/(private)/docs/stack/'
   fileRoutesById: FileRoutesById
 }
 
@@ -177,7 +197,8 @@ export const routeTree = rootRoute
     "/(private)": {
       "filePath": "(private)/route.tsx",
       "children": [
-        "/(private)/docs/"
+        "/(private)/docs/",
+        "/(private)/docs/stack/"
       ]
     },
     "/_docs": {
@@ -188,6 +209,10 @@ export const routeTree = rootRoute
     },
     "/(private)/docs/": {
       "filePath": "(private)/docs/index.tsx",
+      "parent": "/(private)"
+    },
+    "/(private)/docs/stack/": {
+      "filePath": "(private)/docs/stack/index.tsx",
       "parent": "/(private)"
     }
   }

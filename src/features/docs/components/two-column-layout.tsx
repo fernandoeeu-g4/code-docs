@@ -17,9 +17,9 @@ const TwoColumnLayout = React.forwardRef<HTMLDivElement, TwoColumnLayoutProps>(
       <div
         ref={ref}
         className={cn(
-          "flex flex-row",
+          "flex flex-col md:flex-row", // Stack vertically on mobile, row on desktop
           height,
-          "overflow-hidden", // Previne overflow no container pai
+          "overflow-hidden",
           className
         )}
         {...props}
@@ -37,7 +37,8 @@ const Column = React.forwardRef<HTMLDivElement, ColumnProps>(
       <div
         ref={ref}
         className={cn(
-          "overflow-y-auto", // Habilita scroll interno
+          "overflow-y-auto",
+          "h-[50vh] md:h-auto", // Fixed height on mobile, auto on desktop
           width,
           className
         )}
