@@ -1,13 +1,6 @@
-interface PlaygroundProps {
-  files?: Record<string, string>
-  template?: 'react' | 'vanilla' | 'vue' | 'angular' | 'nextjs'
-  theme?: 'light' | 'dark' | 'auto'
-  className?: string
-}
-
 // Define the files for the Button example
 export const buttonExampleFiles = {
-  '/App.js': `import React from 'react';
+  "/App.js": `import React from 'react';
 import { Button } from './Button'; // Import the Button
 import './styles.css'; // Import custom styles
 
@@ -51,7 +44,7 @@ export default function App() {
     </div>
   );
 }`,
-  '/Button.js': `import * as React from 'react';
+  "/Button.js": `import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva } from 'class-variance-authority';
 import { cn } from './utils';
@@ -103,14 +96,14 @@ function Button({
 }
 
 export { Button, buttonVariants };`,
-  '/utils.js': `import { clsx } from 'clsx';
+  "/utils.js": `import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs) {
   return twMerge(clsx(inputs));
 }`,
   // Add the custom styles file
-  '/styles.css': `
+  "/styles.css": `
 /* Extracted from src/styles.css */
 :root {
   --radius: 0.625rem;
@@ -210,12 +203,12 @@ body {
   to { height: 0; }
 }
   `,
-}
+};
 
 // Define the dependencies for the Button example
 export const buttonDependencies = {
-  '@radix-ui/react-slot': 'latest',
-  'class-variance-authority': 'latest',
-  clsx: 'latest',
-  'tailwind-merge': 'latest',
-}
+  "@radix-ui/react-slot": "latest",
+  "class-variance-authority": "latest",
+  clsx: "latest",
+  "tailwind-merge": "latest",
+};

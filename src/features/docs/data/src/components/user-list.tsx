@@ -99,7 +99,7 @@ import { Edit, Trash2 } from "lucide-react";
     // Confirm delete (mock)
     const confirmDelete = () => {
     // In a real app, you would call an API here
-    console.log(\`Deleting user: ${selectedUser.id}\`)
+    console.log(\`Deleting user: \${selectedUser.id}\`)
     setDeleteDialogOpen(false)
     // Refresh data would happen here
     }
@@ -107,7 +107,7 @@ import { Edit, Trash2 } from "lucide-react";
     // Confirm edit (mock)
     const confirmEdit = () => {
     // In a real app, you would call an API here
-    console.log(\`Updating user: ${selectedUser.id}\`)
+    console.log(\`Updating user: \${selectedUser.id}\`)
     setEditDialogOpen(false)
     // Refresh data would happen here
     }
@@ -172,7 +172,7 @@ import { Edit, Trash2 } from "lucide-react";
                     <TableCell>{user.role}</TableCell>
                     <TableCell>
                         <span
-                        className={\`px-2 py-1 rounded-full text-xs ${
+                        className={\`px-2 py-1 rounded-full text-xs \${
                           user.status === "Ativo"
                             ? "bg-green-100 text-green-800"
                             : "bg-gray-100 text-gray-800"

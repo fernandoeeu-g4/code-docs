@@ -1,37 +1,31 @@
-import { Search, Heart, BellIcon, Menu as MenuIcon, Users } from 'lucide-react'
-import { Link } from '@tanstack/react-router'
-import { Button } from '@/components/ui/button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Separator } from '@/components/ui/separator'
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Link } from "@tanstack/react-router";
+import { BellIcon, Heart, Menu as MenuIcon, Search, Users } from "lucide-react";
 
 const user = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
+  name: "Tom Cook",
+  email: "tom@example.com",
   imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-}
+    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+};
 
 const navigation = [
-  { name: 'Início', href: '/', current: true },
-  { name: 'Pautas', href: '/pautas', current: false },
-  { name: 'Centrais', href: '/centrais', current: false },
-  { name: 'Campanhas', href: '/campanhas', current: false },
-  { name: 'Calendário de Relevância', href: '/calendario', current: false },
-  { name: 'Sobre', href: '/sobre', current: false },
-]
+  { name: "Início", href: "/", current: true },
+  { name: "Pautas", href: "/pautas", current: false },
+  { name: "Centrais", href: "/centrais", current: false },
+  { name: "Campanhas", href: "/campanhas", current: false },
+  { name: "Calendário de Relevância", href: "/calendario", current: false },
+  { name: "Sobre", href: "/sobre", current: false },
+];
 
 const userNavigation = [
-  { name: 'Your Profile', href: '/profile' },
-  { name: 'Settings', href: '/settings' },
-  { name: 'Sign out', href: '/sign-out' },
-]
+  { name: "Your Profile", href: "/profile" },
+  { name: "Settings", href: "/settings" },
+  { name: "Sign out", href: "/sign-out" },
+];
 
 export function Navbar() {
   return (
@@ -54,10 +48,10 @@ export function Navbar() {
                   to={item.href}
                   className={`${
                     item.current
-                      ? 'bg-gray-900 text-white'
-                      : 'text-gray-800 hover:bg-gray-500 hover:text-white'
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-800 hover:bg-gray-500 hover:text-white"
                   } rounded-md px-3 py-2 text-sm font-medium transition-colors`}
-                  aria-current={item.current ? 'page' : undefined}
+                  aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
                 </Link>
@@ -101,8 +95,8 @@ export function Navbar() {
                         to={item.href}
                         className={`${
                           item.current
-                            ? 'bg-gray-900 text-white'
-                            : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                            ? "bg-gray-900 text-white"
+                            : "text-gray-300 hover:bg-gray-700 hover:text-white"
                         } block rounded-md px-3 py-2 text-base font-medium`}
                       >
                         {item.name}
@@ -154,5 +148,5 @@ export function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }

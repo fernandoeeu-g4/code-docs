@@ -8,7 +8,6 @@ import { Column, TwoColumnLayout } from "./components/two-column-layout";
 import { currentFileAtom } from "./store/docs.store";
 import type { FileContent, TreeNode } from "./types"; // Import types using 'import type'
 import { mockFileContents, mockFileTree } from "./types"; // Import values (mock data)
-import { DocsToolbar } from "./components/docs-toolbar";
 
 // Helper function to find a node by PATH (recursive)
 const findNodeByPath = (nodes: TreeNode[], path: string): TreeNode | null => {

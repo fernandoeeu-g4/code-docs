@@ -1,14 +1,14 @@
-'use client';
-import { cn } from '@/lib/utils';
-import { useState, createContext, useContext } from 'react';
+"use client";
+import { cn } from "@/lib/utils";
+import { useState, createContext, useContext } from "react";
 import {
   motion,
-  MotionValue,
-  SpringOptions,
+  type MotionValue,
+  type SpringOptions,
   useMotionValue,
   useSpring,
   useTransform,
-} from 'motion/react';
+} from "motion/react";
 
 const ImageComparisonContext = createContext<
   | {
@@ -52,7 +52,7 @@ function ImageComparison({
       event.currentTarget as HTMLElement
     ).getBoundingClientRect();
     const x =
-      'touches' in event
+      "touches" in event
         ? event.touches[0].clientX - containerRect.left
         : (event as React.MouseEvent).clientX - containerRect.left;
 
@@ -70,8 +70,8 @@ function ImageComparison({
     >
       <div
         className={cn(
-          'relative select-none overflow-hidden',
-          enableHover && 'cursor-ew-resize',
+          "relative select-none overflow-hidden",
+          enableHover && "cursor-ew-resize",
           className
         )}
         onMouseMove={handleDrag}
@@ -97,7 +97,7 @@ const ImageComparisonImage = ({
   className?: string;
   alt: string;
   src: string;
-  position: 'left' | 'right';
+  position: "left" | "right";
 }) => {
   const { motionSliderPosition } = useContext(ImageComparisonContext)!;
   const leftClipPath = useTransform(
@@ -113,9 +113,9 @@ const ImageComparisonImage = ({
     <motion.img
       src={src}
       alt={alt}
-      className={cn('absolute inset-0 h-full w-full object-cover', className)}
+      className={cn("absolute inset-0 h-full w-full object-cover", className)}
       style={{
-        clipPath: position === 'left' ? leftClipPath : rightClipPath,
+        clipPath: position === "left" ? leftClipPath : rightClipPath,
       }}
     />
   );
@@ -134,7 +134,7 @@ const ImageComparisonSlider = ({
 
   return (
     <motion.div
-      className={cn('absolute bottom-0 top-0 w-1 cursor-ew-resize', className)}
+      className={cn("absolute bottom-0 top-0 w-1 cursor-ew-resize", className)}
       style={{
         left,
       }}

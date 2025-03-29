@@ -1,9 +1,7 @@
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
-import { useEffect, useState } from "react";
 import { useTheme } from "@/components/theme-provider";
-import { AnimatePresence, motion } from "motion/react";
 import { Moon, Sun } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
 
 const iconVariants = {
   initial: {

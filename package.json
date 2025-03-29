@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 3000",
-    "build": "vite build && tsc",
+    "build": "vite build && tsc --noEmit",
     "serve": "vite preview",
     "test": "vitest run"
   },
@@ -61,6 +61,7 @@
     "react-hook-form": "^7.55.0",
     "react-resizable-panels": "^2.1.7",
     "react-simple-code-editor": "^0.14.1",
+    "react-use-measure": "^2.1.7",
     "recharts": "^2.15.1",
     "shiki": "^3.2.1",
     "sonner": "^2.0.2",

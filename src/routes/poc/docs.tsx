@@ -1,8 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
-import React, { useRef, useState } from "react";
-import Markdoc from "@markdoc/markdoc";
 import listUsers from "@/features/docs/data/src/features/users/pages/list-users";
 import { useQuery } from "@tanstack/react-query";
+import { createFileRoute } from "@tanstack/react-router";
+import React, { useRef, useState } from "react";
 import { codeToHtml } from "shiki";
 const markdown = listUsers;
 
