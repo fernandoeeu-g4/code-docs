@@ -1,0 +1,1 @@
+import{j as e}from"./client-C4qm4EqK.js";function s({children:n,className:r,...o}){return e.jsx("div",{className:r,...o,children:n})}s.displayName="Box";const c=function(){return e.jsx(s,{className:"bg-red-200 p-4",children:e.jsx("h1",{children:"Hello"})})};export{c as component};
